@@ -1,13 +1,186 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+:root {
+  --red-1: #e21b3c;
+  --red-2: #a9142d;
+  --red-3: #89040d;
+  --blue-1: #1368ce;
+  --blue-2: #0e4e9a;
+  --blue-3: #034390;
+  --black-1: #1d2021;
+  --black-2: #262829;
+  --black-3: #2d3031;
+  --white-1: #ffffff;
+  --white-2: #ededed;
+  --white-3: #444444;
+  --purple-1: #85a3d7;
+  --purple-2: #8e4eff;
+  --purple-3: #5e4cb2;
+  --purple-4: #39259d;
+  --yellow-1: #d09f36;
+  --yellow-2: #9c7728;
+  --yellow-3: #7c5708;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  min-width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  color: var(--white-2);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.app {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  background-color: var(--black-1);
+  width: 100%;
+  height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.top-app-bar {
+  width: 100%;
+  height: 70px;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  background-color: var(--black-2);
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  justify-content: start;
+}
+
+.top-app-bar button {
+  border: 0;
+  color: var(--white-1);
+  height: 50px;
+  padding: 0px 25px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1.15rem;
+  font-family: inherit;
+  letter-spacing: 1px;
+  outline: 0;
+  will-change: background-color, border-bottom-color;
+  transition: all 0.5s ease-in-out;
+}
+
+.top-app-bar button:nth-of-type(1) {
+  background-color: var(--yellow-1);
+  border-bottom: 3px solid var(--yellow-2);
+}
+
+.top-app-bar button:nth-of-type(1):hover {
+  background-color: var(--yellow-2);
+  border-bottom-color: var(--yellow-3);
+}
+
+.top-app-bar button:nth-of-type(2) {
+  background-color: var(--blue-1);
+  border-bottom: 3px solid var(--blue-2);
+}
+
+.top-app-bar button:nth-of-type(2):hover {
+  background-color: var(--blue-2);
+  border-bottom-color: var(--blue-3);
+}
+
+
+.top-app-bar button:nth-of-type(3) {
+  background-color: var(--red-1);
+  border-bottom: 3px solid var(--red-2);
+}
+
+.top-app-bar button:nth-of-type(3):hover {
+  background-color: var(--red-2);
+  border-bottom-color: var(--red-3);
+}
+
+.top-app-bar__group {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0px 10px;
+}
+
+.sudoku-wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.sudoku {
+  grid-gap: 6px;
+  width: 90%;
+  height: 90%;
+  max-width: calc(calc(100vh * 0.9) - 70px);
+  max-height: calc(calc(100vh * 0.9) - 70px);
+}
+
+.sudoku, .sudoku > .square {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.sudoku > .square {
+  grid-gap: 3px;
+}
+
+.sudoku .cell {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--white-1);
+  background-color: var(--black-2);
+  font-size: 1.75rem;
+  font-weight: 800;
+  font-family: inherit;
+  border-radius: 6px;
+  border: 0;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 0;
+  will-change: background-color;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.sudoku .cell:focus {
+  background-color: var(--black-3);
+}
+
+.sudoku .cell.editable {
+  color: var(--white-1);
+}
+
+.sudoku .cell.editable:hover {
+  background-color: var(--black-3);
+}
+
+.sudoku .cell.uneditable {
+  color: var(--white-3);
 }
